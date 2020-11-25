@@ -1,4 +1,4 @@
-enviroment: venv
+venv: venv
 	virtualenv venv -p python3.8
 
 init:
@@ -8,4 +8,4 @@ init:
 test:
 	py.test tests
 
-.PHONY: init test
+.PHONY: init test venv
