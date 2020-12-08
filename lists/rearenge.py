@@ -1,6 +1,3 @@
-import pytest
-
-
 def rearrange(lst):
     start = 0
     end = len(lst) - 1
