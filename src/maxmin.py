@@ -1,4 +1,3 @@
-
 def max_min(lst):
     return r_max_min(lst, size=len(lst))
 
@@ -27,7 +26,7 @@ def r_max_min(lst, size):
         max_value = lst.pop(max_ind)
         min_value = lst.pop(min_ind)
 
-        tmp = r_max_min(lst, size=size -2)
+        tmp = r_max_min(lst, size=size - 2)
         tmp.insert(0, min_value)
         tmp.insert(0, max_value)
         return tmp

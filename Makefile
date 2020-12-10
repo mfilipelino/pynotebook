@@ -5,7 +5,7 @@ init:
 	virtualenv venv -p python3.8
 	pip install -r requirements.txt
 
-test:
-	py.test tests
+tests:
+	pytest src/*
 
 .PHONY: init test venv

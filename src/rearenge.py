@@ -18,6 +18,7 @@ def r_rearrange(lst):
     """
     Recursive rearrange
     """
+
     def recursive_rearrange(lst, start, end):
         if start >= end:
             return lst
@@ -46,5 +47,5 @@ def test_case1():
 
 
 def test_case2():
-    assert [-6, -1, -9, 4, 5, 20, 10] == rearrange([10,-1,20,4,5,-9,-6])
-    assert [-6, -1, -9, 4, 5, 20, 10] == r_rearrange([10,-1,20,4,5,-9,-6])
+    assert [-6, -1, -9, 4, 5, 20, 10] == rearrange([10, -1, 20, 4, 5, -9, -6])
+    assert [-6, -1, -9, 4, 5, 20, 10] == r_rearrange([10, -1, 20, 4, 5, -9, -6])
