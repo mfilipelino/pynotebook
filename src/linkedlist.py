@@ -12,7 +12,7 @@ class LinkedList:
         return self.head_node
 
     def is_empty(self):
-        if (self.head_node is None):  # Check whether the head is None
+        if self.head_node is None:  # Check whether the head is None
             return True
         else:
             return False
@@ -55,13 +55,12 @@ class LinkedList:
         return True
 
     def delete_at_head(self):
-        # Get Head and firstElement of List
         first_element = self.get_head()
         # If List is not empty then link head to the
         # nextElement of firstElement.
-        if (first_element is not None):
+        if first_element is not None:
             self.head_node = first_element.next_element
-            first_element.next_element = None
+#            first_element.next_element = None
         return
 
     def length(self):
@@ -94,11 +93,28 @@ def search(lst, value):
         return False
     else:
         node = lst.get_head()
-        while node != None:
+        while node is not None:
             if node.data == value:
                 return True
             node = node.next_element
         return False
+
+
+def delete(lst, value):
+    if lst.is_empty():
+        return False
+    else:
+        node = lst.get_head()
+        if node.data == value:
+            lst.delete_at_head()
+            return True
+        else:
+            while node.next_element is not None:
+                next = node.next_element
+                if next.data == value:
+                    node.next_element = next.next_element
+                    return True
+            return False
 
 
 def test_base():
@@ -128,4 +144,14 @@ def test_search_list_the_value_present():
     assert search(lst, 1) is True
     assert search(lst, 2) is True
     assert search(lst, 3) is True
-    assert search(lst, 0) is False
+
+
+def test_delete_empty_list():
+    lst = LinkedList()
+    lst.insert_at_tail(4)
+    lst.insert_at_tail(1)
+    assert delete(lst, 4) is True
+    print()
+    lst.print_list()
+
+
