@@ -1,7 +1,4 @@
-class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next_element = None
+from Node import Node
 
 
 class LinkedList:
@@ -16,6 +13,18 @@ class LinkedList:
             return True
         else:
             return False
+
+    def lenght(self):
+        if self.is_empty() is True:
+            return 0
+        else:
+            node = self.head_node
+            count = 1
+            while node.next_element is not None:
+                count += 1
+                node = node.next_element
+
+            return count
 
     def insert_at_head(self, dt):
         temp_node = Node(dt)
@@ -102,72 +111,3 @@ class LinkedList:
 
         print(dt, " is not in List!")
         return None
-
-
-def search(lst, value):
-    if lst.is_empty():
-        return False
-    else:
-        node = lst.get_head()
-        while node is not None:
-            if node.data == value:
-                return True
-            node = node.next_element
-        return False
-
-
-def delete(lst, value):
-    if lst.is_empty():
-        return False
-    else:
-        node = lst.get_head()
-        if node.data == value:
-            lst.delete_at_head()
-            return True
-        else:
-            while node.next_element is not None:
-                next = node.next_element
-                if next.data == value:
-                    node.next_element = next.next_element
-                    return True
-            return False
-
-
-def test_base():
-    lst = LinkedList()
-    assert lst.is_empty() is True
-    assert lst.get_head() is None
-
-
-def test_search_list_empty():
-    lst = LinkedList()
-    assert search(lst, 2) is False
-
-
-def test_search_list_is_missing_value():
-    lst = LinkedList()
-    lst.insert_at_tail(1)
-    lst.insert_at_tail(2)
-    lst.insert_at_tail(3)
-    assert search(lst, 0) is False
-
-
-def test_search_list_the_value_present():
-    lst = LinkedList()
-    lst.insert_at_tail(1)
-    lst.insert_at_tail(2)
-    lst.insert_at_tail(3)
-    assert search(lst, 1) is True
-    assert search(lst, 2) is True
-    assert search(lst, 3) is True
-
-
-def test_delete_empty_list():
-    lst = LinkedList()
-    lst.insert_at_tail(4)
-    lst.insert_at_tail(1)
-    assert delete(lst, 4) is True
-    print()
-    lst.print_list()
-
-
